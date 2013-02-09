@@ -42,7 +42,7 @@ DHT DHT2( DHT2PIN , DHT22 ); // Sensor 2
 */
 int topfSensor1Pin = A1;
 int topfSensor1Wert = 0;
-SmoothAnalogInput ai1;
+SmoothAnalogInput ai1; 
 
 /*
   Wasser & Giessen.
@@ -56,8 +56,8 @@ boolean taghell = false;
   Lichtsensor.
 */
 int photocellPin = A0; // the cell and 10K pulldown are connected to a0
-int photocellReading = 0; // the analog reading from the sensor divider
-SmoothAnalogInput ai0;
+//int photocellReading = 0; // the analog reading from the sensor divider
+//SmoothAnalogInput ai0;
 
 /*
   Ethernet.
@@ -110,7 +110,7 @@ void setup() {
   delay(1000);
   
   // Analog Input smoothen.
-  ai0.attach(photocellPin);
+  //ai0.attach(photocellPin);
   ai1.attach(topfSensor1Pin);
   
   // initialize the relay pin as an output:
@@ -382,7 +382,7 @@ void serialPrint(){
     Serial.println( topfSensor1Wert );
     
     Serial.print( "Helligkeit: " );
-    Serial.println( ai0.read() );
+    Serial.println( photocellPin );
     
     Serial.print( "Relais 2 Radiator: " );
     Serial.println(relay1Status);
@@ -413,7 +413,7 @@ void updateSensorValues(){
   h2 = DHT2.readHumidity();
   t2 = DHT2.readTemperature();
   
-  photocellReading = ai0.read();
+  photocellReading = A0.read();
   
   topfSensor1Wert = ai1.read();
   
