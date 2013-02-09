@@ -10,8 +10,6 @@ int photocellReading = 0; // the analog reading from the sensor divider
 */
 void setup() {
   
-  updateLight();
-  
 }
 
 /*
@@ -29,7 +27,7 @@ void loop() {
 }
 
 /*
-  Endlos.
+  Update Sensorwerte.
 */
 void updateLight() {
  
